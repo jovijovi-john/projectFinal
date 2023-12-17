@@ -1,0 +1,49 @@
+.ul-links {
+  margin-right: 2rem !important;
+}
+
+.offcanvas-body {
+  @media (max-width: 992px) {
+    background-color: rgba(0, 0, 0, 1);
+    border-right: 1px solid var(--primary-color);
+
+    #offcanvasLabel {
+      color: #fff !important;
+    }
+
+    #profile {
+      margin-top: 1rem;
+    }
+  }
+}
+
+ul {
+  margin: 0;
+
+  gap: 0.5 rem;
+  font-weight: 500;
+
+  .profile-picture {
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    border-radius: 100%;
+  }
+
+  .link-category {
+    cursor: pointer;
+  }
+  li {
+    a {
+      font-size: 1.115rem;
+      color: var(--text-gray);
+
+      transition: all 0.5s;
+
+      &:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
+    }
+  }
+}

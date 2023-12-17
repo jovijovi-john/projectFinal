@@ -1,0 +1,18 @@
+.carousel-box {
+  margin-top: 2rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+
+  box-shadow: 0px 0px 100px rgba(48, 57, 134, 0.589);
+
+  .slide {
+    background: none;
+    height: 70vh;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

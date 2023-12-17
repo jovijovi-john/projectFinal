@@ -1,0 +1,18 @@
+<header class="text-white-50 border-3 border-bottom border-danger">
+  <div class="d-flex align-items-center py-4 w-100 container-header">
+    <!-- Logo dell'app -->
+    <app-logo />
+
+    <!-- Navbar -->
+
+    <app-navbar *ngIf="authenticated" [categories]="categories" />
+
+    <!-- Profile || Login Button -->
+    <div
+      *ngIf="!authenticated"
+      class="login-accedi d-flex align-items-center justify-content-center"
+    >
+      <app-button />
+    </div>
+  </div>
+</header>

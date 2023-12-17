@@ -1,0 +1,125 @@
+<form
+  [formGroup]="formFilm"
+  (ngSubmit)="onSubmit()"
+  *ngIf="formType != 'delete'"
+>
+  <div></div>
+  <div class="form-style">
+    <div class="form-field">
+      <label for="">Title</label
+      ><input
+        formControlName="titolo"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Year</label
+      ><input
+        formControlName="anno"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Directors</label
+      ><input
+        formControlName="regista"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Actors</label
+      ><input
+        formControlName="attori"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Description</label
+      ><textarea
+        formControlName="descrizione"
+        class="form-control form-control mt-2"
+        type="text"
+      ></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="">Duration</label
+      ><input
+        formControlName="durata"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Cover url</label
+      ><input
+        formControlName="srcImmagine"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Trailer url</label
+      ><input
+        formControlName="srcFilmato"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Banner url</label
+      ><input
+        formControlName="srcBanner"
+        class="form-control form-control mt-2"
+        type="text"
+      />
+    </div>
+    <div class="form-field">
+      <label for="">Category</label>
+      <select
+        name="idCategoria"
+        id="idCategoria"
+        class="form-control form-control mt-2"
+        formControlName="idCategoria"
+      >
+        <option value="" selected disabled>Select Category</option>
+
+        <option
+          value="{{ category.idCategoria }}"
+          *ngFor="let category of categories"
+        >
+          {{ category.nome }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <button
+    *ngIf="!loading"
+    class="btn btn-danger"
+    [disabled]="formFilm.invalid"
+    [class.btn-danger]="formFilm.invalid"
+    [class.btn-success]="formFilm.valid"
+  >
+    Submit
+  </button>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+</form>
+
+<div class="delete-form" *ngIf="formType === 'delete'">
+  <p class="text-light fs-3 text-center">Are you sure delete this item?</p>
+
+  <div class="buttons" *ngIf="!loading">
+    <button class="btn cancel btn-secondary">Cancel</button>
+    <button class="btn delete btn-danger" (click)="deleteMovie()">
+      Delete
+    </button>
+  </div>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+</div>

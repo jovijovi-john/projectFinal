@@ -1,0 +1,82 @@
+<main>
+  <!-- <div *ngIf="modal" class="modalTest">MODAL</div> -->
+  <app-header></app-header>
+  <!-- Modal -->
+  <div class="modal-window" *ngIf="modal">
+    <div class="modal-box">
+      <header>
+        <h5 class="title-modal text-light">
+          {{ dadosPai?.formType }} {{ dadosPai?.resourceType }}
+        </h5>
+        <button class="btn text-danger" (click)="toggleModal()">
+          <ng-icon name="heroXMark" size="36"></ng-icon>
+        </button>
+      </header>
+      <div class="modal-form">
+        <!-- Formulário de EditFilm -->
+        <app-movie-form
+          [formType]="dadosPai?.formType"
+          *ngIf="dadosPai?.resourceType === 'movie'"
+        ></app-movie-form>
+        <app-serie-form
+          [formType]="dadosPai?.formType"
+          *ngIf="dadosPai?.resourceType === 'serie'"
+          [serie]="serie"
+        ></app-serie-form>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="banner-movie">
+      <img src="{{ serie?.srcBanner }}" alt="" />
+
+      <div class="bg-gradient-black">
+        <div class="movie-content">
+          <div class="info-movie">
+            <h2 class="text-light">{{ serie?.titolo }}</h2>
+          </div>
+
+          <p class="desc-movie">
+            {{ serie?.descrizione }}
+          </p>
+
+          <div class="info-movie">
+            <p><span>Seasons:</span> {{ serie?.totaleStagioni }}</p>
+            <p><span>Episodes:</span> {{ serie?.numeroEpisodio }}</p>
+            <p><span>Director:</span> {{ serie?.regista }}</p>
+            <p><span>Actors:</span> {{ serie?.attori }}</p>
+            <p><span>Language: </span>English</p>
+            <p><span>Subtitles:</span>English</p>
+          </div>
+
+          <div class="buttons">
+            <button class="btn btn-success">
+              <a href="{{ serie?.srcFilmato }}" target="_blank">
+                Play <ng-icon name="heroPlay" size="24"></ng-icon
+              ></a>
+            </button>
+
+            <button
+              class="btn btn-warning"
+              *ngIf="auth?.idGruppo === 1"
+              (click)="handleModal('edit')"
+            >
+              Edit <ng-icon name="heroPencilSquareSolid" size="24"></ng-icon>
+            </button>
+            <button
+              class="btn btn-danger"
+              *ngIf="auth?.idGruppo === 1"
+              (click)="handleModal('delete')"
+            >
+              Delete <ng-icon name="heroArchiveBoxXMark" size="24"></ng-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-categorie-section [idCategory]="2" [type]="'serie'" />
+  </div>
+  <app-footer></app-footer>
+</main>

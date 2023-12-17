@@ -1,0 +1,147 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(
+    180deg,
+    rgb(20, 20, 27) 0%,
+    var(--primary-color) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h2 {
+  border-bottom: 2px solid #666;
+  padding-bottom: 1rem;
+}
+
+input,
+select {
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.field-header {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center !important;
+
+  span {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.errors {
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  text-indent: 1rem;
+}
+
+.form-homepage {
+  padding: 4rem;
+  align-self: center;
+  display: flex;
+  width: 80%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgba(#000000, 0.85);
+
+  form {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+
+      h6 {
+        @media (min-width: 1200px) {
+          margin-top: 1rem;
+        }
+      }
+
+      &.address {
+        gap: 1rem;
+      }
+
+      .column-1 {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &.column-2,
+      .column-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      &.column-3,
+      .column-3 {
+        display: flex;
+
+        @media (min-width: 1450px) {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 1rem;
+        }
+      }
+
+      &.name {
+        display: grid;
+        flex-direction: grid;
+        grid-template-columns: 2fr 2fr 1fr;
+        gap: 1rem;
+
+        @media (max-width: 1200px) {
+          display: flex;
+        }
+      }
+
+      > input {
+        margin-bottom: 1rem;
+      }
+
+      h6 {
+        align-self: flex-start;
+        font-size: 1.125rem;
+        color: var(--text-gray);
+      }
+
+      div {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        select {
+          flex: 1;
+        }
+      }
+
+      .form-header {
+        h6 {
+          display: inline-flex;
+        }
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        div {
+          span {
+            margin: 0;
+            padding: 0;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+button {
+  margin-top: 2rem;
+}

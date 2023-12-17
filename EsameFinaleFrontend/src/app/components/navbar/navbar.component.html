@@ -1,0 +1,134 @@
+<nav class="navbar navbar-expand-lg navbar-dark z-3">
+  <div class="container-fluid z-3">
+    <!-- Sandwich button appears when menu collapses -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#navbarOffcanvas"
+    >
+      <span
+        class="navbar-toggler-icon"
+        data-bs-target="#navbarOffcanvas"
+      ></span>
+    </button>
+
+    <!-- DIV offcanvas-->
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-hidersize="true"
+      id="navbarOffcanvas"
+    >
+      <!--  DIV header - which contains the title of the panel -->
+      <div class="offcanvas-header bg-danger">
+        <h5 class="offcanvas-title" id="offcanvasLabel">Menu</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+        ></button>
+        <!--  DIV body - which contains the menu to collapse -->
+      </div>
+      <div class="offcanvas-body">
+        <!--  Menu items - LEFT SIDE -->
+        <ul class="navbar-nav ul-links">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              title="Go to the Home page"
+              routerLink="/home"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/movies"
+              title="Go to the movies page"
+              >Movies</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/series"
+              title="Go to the series page"
+              >Series</a
+            >
+          </li>
+          <li class="nav-item">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  title="Categories"
+                  >Categories</a
+                >
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li *ngFor="let category of categories" class="link-category">
+                    <a
+                      (click)="redirectToMediaPage(category.idCategoria)"
+                      class="dropdown-item"
+                      >{{ category.nome }}</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!--  Menu items - RIGHT SIDE enclosed in a dropdown Menu -->
+        <ul class="d-flex navbar-nav">
+          <img
+            class="profile-picture z-3 d-none d-lg-flex"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png"
+            alt=""
+          />
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="profile"
+              role="button"
+              data-bs-toggle="dropdown"
+              title="Profilo"
+              >{{ auth?.nome }}</a
+            >
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+              <li>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  title="Go to the page Personal Data"
+                  >Personal Data</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  title="Go to the page Change Password"
+                  >Change Password</a
+                >
+              </li>
+              <li class="dropdown-divider"></li>
+              <li>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  title="Manage yours Credits"
+                  (click)="logout()"
+                  >logout</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

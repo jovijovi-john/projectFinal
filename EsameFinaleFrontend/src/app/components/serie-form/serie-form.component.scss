@@ -1,0 +1,51 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .form-style {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 600;
+        color: var(--text-gray);
+      }
+
+      input,
+      textarea,
+      select {
+        height: 3rem;
+        background-color: #282828;
+        border: none;
+        color: var(--text-gray);
+      }
+    }
+  }
+}
+
+button {
+  flex: 1;
+  padding: 0.7rem;
+  font-size: 1.125rem;
+}
+
+.delete-form {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  .buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+
+    .cancel {
+      background-color: #303030;
+    }
+  }
+}

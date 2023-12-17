@@ -1,0 +1,54 @@
+<main class="container-main">
+  <app-header></app-header>
+
+  <div class="modal-window" *ngIf="modal">
+    <div class="modal-box">
+      <header>
+        <h5 class="title-modal text-light">
+          {{ dadosPai?.formType }} {{ dadosPai?.resourceType }}
+        </h5>
+        <button class="btn text-danger" (click)="toggleModal()">
+          <ng-icon name="heroXMark" size="36"></ng-icon>
+        </button>
+      </header>
+      <div class="modal-form">
+        <!-- Formulário de EditFilm -->
+        <app-movie-form
+          [formType]="dadosPai?.formType"
+          *ngIf="dadosPai?.resourceType === 'movie'"
+        ></app-movie-form>
+        <app-serie-form
+          [formType]="dadosPai?.formType"
+          *ngIf="dadosPai?.resourceType === 'serie'"
+        ></app-serie-form>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2 class="title text-danger">Movies</h2>
+
+    <div
+    *ngIf="loading"
+      style="
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <app-spinner></app-spinner>
+    </div>
+    <div *ngFor="let category of categories">
+      <app-categorie-section
+        [categoryName]="category.nome"
+        [idCategory]="category.idCategoria"
+        [type]="'movie'"
+        [(modal)]="modal"
+        (dadosChange)="handleDadosChange($event)"
+      />
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</main>

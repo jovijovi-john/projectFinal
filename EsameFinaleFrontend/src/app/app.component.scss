@@ -1,0 +1,10 @@
+footer {
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100vh;
+  background-color: rgb(68, 0, 255);
+}

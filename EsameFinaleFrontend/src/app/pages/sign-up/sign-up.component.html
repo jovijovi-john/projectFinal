@@ -1,0 +1,444 @@
+<main class="text-white d-flex">
+  <app-header></app-header>
+  <div
+    class="d-flex flex-column text-center gap-2 rounded-4 form-homepage justify-content-center"
+  >
+    <h2 class="slogan fs-1 mb-4">Sign Up Form</h2>
+
+    <form [formGroup]="formSignUp" (ngSubmit)="onSubmit()" class="text-light">
+      <fieldset class="column-3 name">
+        <div>
+          <div class="form-header">
+            <h6>Name</h6>
+            <div
+              class="errors"
+              *ngIf="
+                formSignUp.get('nome')?.touched &&
+                formSignUp.get('nome')?.errors as nomeErrors
+              "
+            >
+              <span *ngIf="nomeErrors['required']">Name is required</span>
+              <span *ngIf="nomeErrors['minlength']">Min 3 characters</span>
+            </div>
+          </div>
+          <input
+            type="text"
+            id="name"
+            formControlName="nome"
+            placeholder="First Name"
+          />
+        </div>
+        <div>
+          <div class="form-header">
+            <h6>Surname</h6>
+            <div
+              class="errors"
+              *ngIf="
+                formSignUp.get('cognome')?.touched &&
+                formSignUp.get('cognome')?.errors as cognomeErrors
+              "
+            >
+              <span *ngIf="cognomeErrors['required']">Surname is required</span>
+              <span *ngIf="cognomeErrors['minlength']">Min 3 characters</span>
+            </div>
+          </div>
+          <input
+            type="text"
+            id="surname"
+            formControlName="cognome"
+            placeholder="Last Name"
+          />
+        </div>
+        <div>
+          <div class="form-header">
+            <h6>Gender</h6>
+            <div
+              class="errors"
+              *ngIf="
+                formSignUp.get('sesso')?.touched &&
+                formSignUp.get('sesso')?.errors as sessoErrors
+              "
+            >
+              <span *ngIf="sessoErrors['required']">Gender is required</span>
+            </div>
+          </div>
+          <select id="sesso" name="sesso" formControlName="sesso">
+            <option value="" selected disabled>Select your gender</option>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="column-3">
+        <div>
+          <div class="form-header">
+            <h6>Date of Birth</h6>
+            <div
+              class="errors"
+              *ngIf="
+                formSignUp.get('dataNascita')?.touched &&
+                formSignUp.get('dataNascita')?.errors as dataNascitaErrors
+              "
+            >
+              <span *ngIf="dataNascitaErrors['required']"
+                >Date of birth is required</span
+              >
+            </div>
+          </div>
+          <input
+            type="date"
+            name="dataNascita"
+            id="dataNascita"
+            formControlName="dataNascita"
+          />
+        </div>
+        <div>
+          <div class="form-header">
+            <h6>Nationality</h6>
+            <div
+              class="errors"
+              *ngIf="
+                formSignUp.get('cittadinanza')?.touched &&
+                formSignUp.get('cittadinanza')?.errors as cittadinanzaErrors
+              "
+            >
+              <span *ngIf="cittadinanzaErrors['required']"
+                >Nationality is required</span
+              >
+              <span *ngIf="cittadinanzaErrors['minlength']"
+                >Min 3 characters</span
+              >
+            </div>
+          </div>
+          <input
+            type="text"
+            name="cittadinanza"
+            id="cittadinanza"
+            placeholder="Nationality"
+            formControlName="cittadinanza"
+          />
+        </div>
+        <div>
+          <div class="form-header">
+            <h6>Tax ID code</h6>
+            <div
+              class="errors"
+              *ngIf="
+                formSignUp.get('codiceFiscale')?.touched &&
+                formSignUp.get('codiceFiscale')?.errors as codiceFiscaleErrors
+              "
+            >
+              <span *ngIf="codiceFiscaleErrors['required']"
+                >Tax ID code is required</span
+              >
+              <span *ngIf="codiceFiscaleErrors['minlength']"
+                >Min 16 characters</span
+              >
+              <span *ngIf="codiceFiscaleErrors['maxlength']"
+                >Max 16 characters</span
+              >
+            </div>
+          </div>
+          <input
+            type="text"
+            name="codiceFiscale"
+            id="codiceFiscale"
+            placeholder="Tax ID code"
+            formControlName="codiceFiscale"
+          />
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <fieldset class="address">
+        <div class="column-2">
+          <div>
+            <div class="form-header">
+              <h6>Address</h6>
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('indirizzo')?.touched &&
+                  formSignUp.get('indirizzo')?.errors as indirizzoErrors
+                "
+              >
+                <span *ngIf="indirizzoErrors['required']"
+                  >Address is required</span
+                >
+                <span *ngIf="indirizzoErrors['minlength']"
+                  >Min 5 characters</span
+                >
+              </div>
+            </div>
+            <input
+              type="text"
+              name="indirizzo"
+              id="street"
+              placeholder="Street Address"
+              formControlName="indirizzo"
+            />
+          </div>
+          <div>
+            <div class="form-header">
+              <h6>District</h6>
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('localita')?.touched &&
+                  formSignUp.get('localita')?.errors as localitaErrors
+                "
+              >
+                <span *ngIf="localitaErrors['required']"
+                  >District is required</span
+                >
+                <span *ngIf="localitaErrors['minlength']"
+                  >Min 5 characters</span
+                >
+              </div>
+            </div>
+            <input
+              type="text"
+              name="localita"
+              id="localita"
+              placeholder="District"
+              formControlName="localita"
+            />
+          </div>
+        </div>
+
+        <div class="column-3">
+          <div>
+            <div class="form-header">
+              <h6>Nation</h6>
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('idNazione')?.touched &&
+                  formSignUp.get('idNazione')?.errors as idNazioneErrors
+                "
+              >
+                <span *ngIf="idNazioneErrors['required']"
+                  >Nation is required</span
+                >
+              </div>
+            </div>
+            <select id="idNazione" formControlName="idNazione" name="idNazione">
+              <option value="" selected disabled>Select a country</option>
+
+              <option
+                *ngFor="let nation of nations"
+                value="{{ nation.idNazione }}"
+              >
+                {{ nation.nome }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <div class="form-header">
+              <h6>Region</h6>
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('provinciaNascita')?.touched &&
+                  formSignUp.get('provinciaNascita')
+                    ?.errors as provinciaNascitaErrors
+                "
+              >
+                <span *ngIf="provinciaNascitaErrors['required']"
+                  >Region is required</span
+                >
+              </div>
+            </div>
+            <select
+              id="provinciaNascita"
+              name="provinciaNascita"
+              formControlName="provinciaNascita"
+            >
+              <option value="" selected disabled>Select a region</option>
+              <option
+                *ngFor="let region of regions"
+                value="{{ region.idProvincia }}"
+              >
+                {{ region.nome }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <div class="form-header">
+              <h6>City</h6>
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('idComuneItaliano')?.touched &&
+                  formSignUp.get('idComuneItaliano')
+                    ?.errors as idComuneItalianoErrors
+                "
+              >
+                <span *ngIf="idComuneItalianoErrors['required']"
+                  >City is required</span
+                >
+              </div>
+            </div>
+            <select
+              id="idComuneItaliano"
+              name="idComuneItaliano"
+              formControlName="idComuneItaliano"
+            >
+              <option value="" selected disabled>Select a city</option>
+              <option
+                *ngFor="let city of cities"
+                value="{{ city.idComuneItaliano }}"
+              >
+                {{ city.nome }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="column-3">
+          <div>
+            <div class="form-header">
+              <h6>Postal / Zip Code</h6>
+
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('cap')?.touched &&
+                  formSignUp.get('cap')?.errors as capErrors
+                "
+              >
+                <span *ngIf="capErrors['required']"
+                  >Postal / Zip Code is required</span
+                >
+                <span *ngIf="capErrors['minlength']">Min 5 characters</span>
+                <span *ngIf="capErrors['maxlength']">Max 5 characters</span>
+              </div>
+            </div>
+            <input
+              type="text  "
+              name=""
+              id="cap"
+              placeholder="Postal Code"
+              formControlName="cap"
+            />
+          </div>
+
+          <div>
+            <div class="form-header">
+              <h6>Street Number</h6>
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('civico')?.touched &&
+                  formSignUp.get('civico')?.errors as civicoErrors
+                "
+              >
+                <span *ngIf="civicoErrors['required']"
+                  >Street number is required</span
+                >
+              </div>
+            </div>
+            <input
+              type="number"
+              name=""
+              id="civico"
+              placeholder="Street Number"
+              formControlName="civico"
+            />
+          </div>
+          <div>
+            <div class="form-header">
+              <h6>Telephone</h6>
+              <div
+                class="errors"
+                *ngIf="
+                  formSignUp.get('recapito')?.touched &&
+                  formSignUp.get('recapito')?.errors as recapitoErrors
+                "
+              >
+                <span *ngIf="recapitoErrors['required']"
+                  >Telephone is required</span
+                >
+                <span *ngIf="recapitoErrors['minlength']"
+                  >Min 8 characters</span
+                >
+              </div>
+            </div>
+            <input
+              type="text"
+              name=""
+              id="recapito"
+              placeholder="Phone Number"
+              formControlName="recapito"
+            />
+          </div>
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <fieldset class="column-2">
+        <div>
+          <div class="field-header">
+            <h6>E-mail</h6>
+            <span
+              class="errors"
+              *ngIf="
+                formSignUp.get('email')?.touched &&
+                formSignUp.get('email')?.errors as emailErrors
+              "
+              ><span *ngIf="emailErrors['required']">Email is required</span>
+              <span *ngIf="emailErrors['email']">Email must be valid</span>
+            </span>
+          </div>
+
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="Type your e-mail"
+          />
+        </div>
+        <div>
+          <div class="form-header">
+            <h6>Password</h6>
+            <div
+              class="errors"
+              *ngIf="
+                formSignUp.get('psw')?.touched &&
+                formSignUp.get('psw')?.errors as pswErrors
+              "
+            >
+              <span *ngIf="pswErrors['required']">Password is required</span>
+              <span *ngIf="pswErrors['minlength']">Min 6 characters</span>
+            </div>
+          </div>
+          <input
+            type="password"
+            id="password"
+            formControlName="psw"
+            placeholder="***********"
+          />
+        </div>
+      </fieldset>
+
+      <!-- Outros campos do formulário -->
+
+      <button
+        type="submit"
+        class="btn btn-danger w-100 p-2 py-3 fs-5"
+        [disabled]="formSignUp.invalid"
+        [class.btn-danger]="formSignUp.invalid"
+        [class.btn-success]="formSignUp.valid"
+        *ngIf="!loading"
+      >
+        Submit
+      </button>
+
+      <app-spinner *ngIf="loading"></app-spinner>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</main>

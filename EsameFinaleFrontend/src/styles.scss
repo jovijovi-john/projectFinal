@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 40px;
+  background-color: #7e7e7e;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(22, 22, 22) 100%);
+  // background: linear-gradient(0deg, rgb(20, 20, 27) 0%, rgb(14, 14, 15) 100%);
+  // background: url("./assets/background-homepage2.png") rgba(#000, 0.85);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+}
+
+:root {
+  --max-width: 1440px;
+  --text-gray: #ccc;
+  --primary-color: rgb(220, 53, 69);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  margin-left: auto;
+  margin-right: auto;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

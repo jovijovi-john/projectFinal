@@ -1,0 +1,80 @@
+<section>
+  <div class="title-section text-white fs-2 mb-4">
+    <h4>
+      <span class="text-danger" *ngIf="type === 'serie'">Series</span>
+      <span class="text-danger" *ngIf="type === 'movie'">Movies</span>
+      /{{ categoryName }}
+    </h4>
+    <button
+      class="btn btn-outline-warning"
+      *ngIf="auth && auth.idGruppo == 1"
+      (click)="toggleModal()"
+    >
+      Add <ng-icon name="heroPlusSolid" size="24"></ng-icon>
+    </button>
+  </div>
+
+  <div *ngIf="!loading">
+    <div class="carousel-div" *ngIf="type === 'serie'">
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div
+          class="slide card-movie-div"
+          ngxSlickItem
+          *ngFor="let serie of series"
+          (click)="redirectToMediaPage(serie.idSerie)"
+        >
+          <img src="{{ serie.srcImmagine }}" alt="" />
+          <div class="card-movie-div-content">
+            <div
+              class="d-flex align-items-center justify-content-between header-card-content"
+            >
+              <h5>{{ serie.titolo }}</h5>
+              <button class="btn btn-success">
+                <a target="_blank" href="{{ serie.srcFilmato }}">Trailer</a>
+              </button>
+            </div>
+            <p class="text-light descrizione">
+              {{ serie.descrizione }}
+            </p>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+
+    <div class="carousel-div" *ngIf="type === 'movie'">
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div
+          class="slide card-movie-div"
+          ngxSlickItem
+          *ngFor="let movie of movies"
+          (click)="redirectToMediaPage(movie.idFilm)"
+        >
+          <img src="{{ movie.srcImmagine }}" alt="" />
+          <div class="card-movie-div-content">
+            <div
+              class="d-flex align-items-center justify-content-between header-card-content"
+            >
+              <h5>{{ movie.titolo }}</h5>
+              <button class="btn btn-success">
+                <a target="_blank" href="{{ movie.srcFilmato }}">Trailer</a>
+              </button>
+            </div>
+            <p class="text-light descrizione">
+              {{ movie.descrizione }}
+            </p>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+</section>

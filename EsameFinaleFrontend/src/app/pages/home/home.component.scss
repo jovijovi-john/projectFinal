@@ -1,0 +1,29 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background: linear-gradient(0deg, rgb(20, 20, 27) 0%, rgb(14, 14, 15) 100%);
+  background: url("../../../assets/background-homepage2.png") rgba(#000, 0.85);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.form-homepage {
+  padding: 4rem;
+  align-self: center;
+  background-color: rgba(#000000, 0.85);
+
+  .input-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    @media (max-width: 780px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

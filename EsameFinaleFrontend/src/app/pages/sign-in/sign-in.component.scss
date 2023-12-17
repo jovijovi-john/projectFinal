@@ -1,0 +1,64 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    rgb(20, 20, 27) 0%,
+    var(--primary-color) 100%
+  );
+}
+
+.error-box {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
+label {
+  color: rgb(70, 32, 32) !important;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.left-box {
+  background-image: url("../../../assets/cinema.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @media (max-width: 991.98px) {
+    display: none;
+  }
+}
+
+.right-box {
+  background-color: rgb(243, 243, 243);
+  padding: 4rem;
+
+  h3 {
+    text-align: center;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  // button {
+  //   border: none;
+  //   font-weight: bold;
+  //   padding: 1rem;
+  //   flex: 1;
+  //   font-size: 1.25rem;
+  //   border-radius: 0.5rem;
+  //   color: #fff;
+  //   transition: all 0.5s;
+
+  //   &:hover {
+  //     background-color: darken(#dc3545, 20%);
+  //   }
+  // }
+}
